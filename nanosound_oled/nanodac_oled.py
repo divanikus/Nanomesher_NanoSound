@@ -354,10 +354,11 @@ while hasOLED:
         except:
             data = data_stub
 
-        if data['volume'] != volume and not screen.enabled:
-            screen.enable()
-            idle  = 0
-            volume= data['volume']
+        if data['volume'] != volume:
+            volume = data['volume']
+            if not screen.enabled:
+                screen.enable()
+                idle  = 0
 
         if data['status'] == 'play' and not screen.enabled:
             screen.enable()
